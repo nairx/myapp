@@ -6,6 +6,7 @@ import Cart from "./Cart";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import Signup from "./Signup";
+import Admin from "./Admin";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
 

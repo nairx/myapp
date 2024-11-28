@@ -12,7 +12,7 @@ export default function Signup() {
       <p>Location:<input type="radio" name="location"></input>Hyderabad<input type="radio" name="location"></input>Bengaluru</p>
       <button>Signup</button>
       <hr></hr>
-      <button>Aready a member? Login Here...</button>
+      <button>Already a member? Login Here...</button>
     </div>
   );
 }
