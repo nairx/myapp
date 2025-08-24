@@ -1,0 +1,11 @@
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.row div {
+    background-color: silver;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
