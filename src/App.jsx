@@ -11,6 +11,11 @@ import Counter from "./components/Counter.jsx";
 import Cart from "./components/Cart.jsx";
 import Register from "./components/Register.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScoreBoard from "./components/ScoreBoard.jsx";
+import SpinButton from "./components/SpinButton.jsx";
+import LifeCycle from "./components/LifeCycle.jsx";
+import Title from "./components/Title.jsx";
+import Students from "./components/Students.jsx";
 function App() {
   return (
     <div>
@@ -20,7 +25,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<LoginUseState />} />
           <Route path="register" element={<Register />} />
+          <Route path="scoreboard" element={<ScoreBoard />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="spin" element={<SpinButton />} />
+          <Route path="lifecycle" element={<LifeCycle />} />
+          <Route path="title" element={<Title />} />
+          <Route path="students" element={<Students />} />
         </Routes>
         <Footer />
       </BrowserRouter>
