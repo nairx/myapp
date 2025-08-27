@@ -10,7 +10,10 @@ export default function Header() {
           <Link to="/spin">SpinButton</Link>&nbsp;|&nbsp;
           <Link to="/lifecycle">LifeCycle</Link>&nbsp;|&nbsp;
            <Link to="/title">Title</Link>&nbsp;|&nbsp;
-           <Link to="/students">Students</Link>
+           <Link to="/students">Students</Link>&nbsp;|&nbsp;
+           <Link to="/useEffectExample">UseEffectExample</Link>&nbsp;|&nbsp;
+           <Link to="/navbutton">Navbutton</Link>&nbsp;|&nbsp;
+           <Link to="/users">Users</Link>
       <hr />
     </div>
   );

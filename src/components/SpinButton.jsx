@@ -19,6 +19,8 @@ export default function SpinButton() {
       setMessage1("Red");
     }
   }, [count1]);
+
+  
   useEffect(() => {
     alert("Hello World");
   }, [count1, count]);
