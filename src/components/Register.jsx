@@ -1,10 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../App.jsx";
+import { useNavigate } from "react-router-dom";
 export default function Register() {
   const [customer, setCustomer] = useState({});
-  const [customers, setCustomers] = useState([]);
+  // const [customers, setCustomers] = useState([]);
+  const { customers, setCustomers } = useContext(AppContext);
+  const Navigate = useNavigate();
   const handleSubmit = () => {
     setCustomers([...customers, customer]);
+    Navigate("/login")
   };
   return (
     <div>
@@ -34,13 +39,13 @@ export default function Register() {
         />
       </p>
       <button onClick={handleSubmit}>Submit</button>
-      <hr />
+      {/* <hr />
       {customers &&
         customers.map((value, index) => (
           <li key={index}>
             {value.name}-{value.email}-{value.password}
           </li>
-        ))}
+        ))} */}
     </div>
   );
 }

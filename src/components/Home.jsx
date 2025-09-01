@@ -1,8 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../App";
 import "./Home.css";
 export default function Home(props) {
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
+  const { cart, setCart,currentCustomer } = useContext(AppContext);
+
+
   const products = [
     {
       id: 1,
@@ -32,22 +36,20 @@ export default function Home(props) {
     }
   };
 
-  const deleteItem = (id) => {
-    const newCart = cart.filter((value) => value.id !== id);
-    setCart(newCart);
-  };
+  // useEffect(() => {
+  //   //cart.reduce((sum,value)=>{},0)
+  //   setTotal(
+  //     cart.reduce((sum, value) => {
+  //       return sum + value.qty * value.price;
+  //     }, 0)
+  //   );
+  // }, [cart]);
 
-  const addQty = (id, qty) => {
-    const found = cart.find((value) => value.id === id);
-    if (found) {
-      found.qty = qty + 1;
-      // setCart([...cart,])
-      setCart([...cart, found]);
-    }
-  };
   return (
     <div>
+       <h3>Welcome {currentCustomer.email}</h3>
       <div className="row">
+       
         {products.map((product) => (
           <div key={product.id}>
             <h3>{product.name}</h3>
@@ -58,18 +60,6 @@ export default function Home(props) {
         ))}
       </div>
       <hr />
-      <div>
-        <h3>My Cart</h3>
-        {cart &&
-          cart.map((item) => (
-            <li key={item.id}>
-              {item.name}-{item.price}-<button>-</button>
-              {item.qty}
-              <button onClick={() => addQty(item.id, item.qty)}>+</button>
-              <button onClick={() => deleteItem(item.id)}>Delete</button>
-            </li>
-          ))}
-      </div>
     </div>
   );
 }
