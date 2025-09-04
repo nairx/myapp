@@ -4,11 +4,13 @@ import axios from "axios";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL
   //   const [counter, setCounter] = useState(0);
   const counterRef = useRef();
   const username = "John";
   const fetchUsers = async () => {
-    const url = "https://jsonplaceholder.typicode.com/users";
+    const url = `${API_URL}/users`;
+    // const url = "https://jsonplaceholder.typicode.com/users"
     const res = await axios.get(url);
     setUsers(res.data);
   };

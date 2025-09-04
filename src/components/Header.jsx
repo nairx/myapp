@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { AppContext } from "../App.jsx";
 export default function Header() {
   const { currentCustomer, setCurrentCustomer } = useContext(AppContext);
+  const APP_NAME = import.meta.env.VITE_APP_NAME
   return (
     <div>
-      <h1 style={{ backgroundColor: "orange" }}>My Application</h1>
+      <h1 style={{ backgroundColor: "orange" }}>{APP_NAME}</h1>
       <Link to="/">Home</Link>&nbsp;|&nbsp;
       <Link to="/cart">Cart</Link>&nbsp;|&nbsp;
       {Object.keys(currentCustomer).length === 0 ? (

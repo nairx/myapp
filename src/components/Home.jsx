@@ -2,10 +2,51 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../App";
 import "./Home.css";
+
+function CartButton({ product }) {
+  const { cart, setCart, currentCustomer } = useContext(AppContext);
+  const found = cart.find((value) => value.id === product.id);
+
+  const addToCart = (product) => {
+    const found = cart.find((value) => value.id === product.id);
+    if (!found) {
+      product.qty = 1;
+      setCart([...cart, product]);
+    }
+  };
+
+    const addQty = (id, qty) => {
+    setCart(
+      cart.map((value) =>
+        value.id === id ? { ...value, qty: qty + 1 } : value
+      )
+    );
+  };
+
+  const reduceQty = (id, qty) => {
+    setCart(
+      cart.map((value) =>
+        value.id === id ? { ...value, qty: qty - 1 } : value
+      )
+    );
+  };
+
+  if (!found) {
+    return <button onClick={() => addToCart(product)}>Add to Cart</button>;
+  } else {
+    return (
+      <>
+        <button onClick={() => reduceQty(found.id, found.qty)}>-</button>
+        {found.qty}
+        <button onClick={() => addQty(found.id, found.qty)}>+</button>
+      </>
+    );
+  }
+}
+
 export default function Home(props) {
   // const [cart, setCart] = useState([]);
-  const { cart, setCart,currentCustomer } = useContext(AppContext);
-
+  const { cart, setCart, currentCustomer } = useContext(AppContext);
 
   const products = [
     {
@@ -28,14 +69,6 @@ export default function Home(props) {
     },
   ];
 
-  const addToCart = (product) => {
-    const found = cart.find((value) => value.id === product.id);
-    if (!found) {
-      product.qty = 1;
-      setCart([...cart, product]);
-    }
-  };
-
   // useEffect(() => {
   //   //cart.reduce((sum,value)=>{},0)
   //   setTotal(
@@ -47,15 +80,14 @@ export default function Home(props) {
 
   return (
     <div>
-       <h3>Welcome {currentCustomer.email}</h3>
+      <h3>Welcome {currentCustomer.email}</h3>
       <div className="row">
-       
         {products.map((product) => (
           <div key={product.id}>
             <h3>{product.name}</h3>
             <p>{product.desc}</p>
             <h4>{product.price}</h4>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <CartButton product={product} />
           </div>
         ))}
       </div>
