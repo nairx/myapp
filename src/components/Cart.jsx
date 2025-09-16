@@ -1,9 +1,11 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import App, { AppContext } from "../App.jsx";
+import { useNavigate } from "react-router-dom";
 export default function Cart() {
-  const { cart, setCart } = useContext(AppContext);
+  const { cart, setCart, currentUser } = useContext(AppContext);
   const [total, setTotal] = useState(0);
+  const Navigate = useNavigate();
   const deleteItem = (id) => {
     const newCart = cart.filter((value) => value.id !== id);
     setCart(newCart);
@@ -59,6 +61,13 @@ export default function Cart() {
         ) : (
           <h3>Order Value:{total}</h3>
         )}
+        <div>
+          {currentUser?.name ? (
+            <button>Place Order</button>
+          ) : (
+            <button onClick={() => Navigate("/login")}>Login to Order</button>
+          )}
+        </div>
       </div>
     </div>
   );
