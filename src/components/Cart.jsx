@@ -3,7 +3,8 @@ import { useContext, useState, useEffect } from "react";
 import App, { AppContext } from "../App.jsx";
 import { useNavigate } from "react-router-dom";
 export default function Cart() {
-  const { cart, setCart, currentUser } = useContext(AppContext);
+  const { cart, setCart, currentCustomer, orders, setOrders } =
+    useContext(AppContext);
   const [total, setTotal] = useState(0);
   const Navigate = useNavigate();
   const deleteItem = (id) => {
@@ -25,6 +26,17 @@ export default function Cart() {
         value.id === id ? { ...value, qty: qty - 1 } : value
       )
     );
+  };
+
+  const placeOrder = () => {
+    const order = {
+      email: currentCustomer.email,
+      items: cart,
+      orderValue: total,
+    };
+    setOrders([...orders, order]);
+    setCart([])
+    console.log(orders)
   };
 
   useEffect(() => {
@@ -59,15 +71,23 @@ export default function Cart() {
         {total === 0 ? (
           <h3>Your cart is empty</h3>
         ) : (
-          <h3>Order Value:{total}</h3>
+          <>
+            <div>
+              {currentCustomer?.name ? (
+                <p>
+                  <button onClick={placeOrder}>Place Order</button>
+                </p>
+              ) : (
+                <p>
+                  <button onClick={() => Navigate("/login")}>
+                    Login to Order
+                  </button>
+                </p>
+              )}
+              <h3>Order Value:{total}</h3>
+            </div>
+          </>
         )}
-        <div>
-          {currentUser?.name ? (
-            <button>Place Order</button>
-          ) : (
-            <button onClick={() => Navigate("/login")}>Login to Order</button>
-          )}
-        </div>
       </div>
     </div>
   );

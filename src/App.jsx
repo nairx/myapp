@@ -26,6 +26,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [currentCustomer, setCurrentCustomer] = useState({});
+  const [orders, setOrders] = useState([]);
   return (
     <div>
       <AppContext.Provider
@@ -36,6 +37,8 @@ function App() {
           setCustomers,
           currentCustomer,
           setCurrentCustomer,
+          orders,
+          setOrders,
         }}
       >
         <BrowserRouter>
