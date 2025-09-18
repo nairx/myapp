@@ -16,7 +16,7 @@ import SpinButton from "./components/SpinButton.jsx";
 import LifeCycle from "./components/LifeCycle.jsx";
 import Title from "./components/Title.jsx";
 import Students from "./components/Students.jsx";
-import UseEffectExample from "./components/useEffectExample.jsx";
+// import UseEffectExample from "./components/useEffectExample.jsx";
 import Users from "./components/Users.jsx";
 import NavButton from "./components/NavButton.jsx";
 import Profile from "./components/Profile.jsx";
@@ -53,7 +53,7 @@ function App() {
             <Route path="lifecycle" element={<LifeCycle />} />
             <Route path="title" element={<Title />} />
             <Route path="students" element={<Students />} />
-            <Route path="useEffectExample" element={<UseEffectExample />} />
+            {/* <Route path="useEffectExample" element={<UseEffectExample />} /> */}
             <Route path="navbutton" element={<NavButton />} />
             <Route path="users" element={<Users />} />
             <Route path="profile" element={<Profile />} />
