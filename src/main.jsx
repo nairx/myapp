@@ -4,5 +4,5 @@ import "./index.css";
 import App from "./App.jsx";
 import CRUD from "./components/CRUD.jsx";
 import ProductTest from "./components/ProductTest.jsx";
-createRoot(document.getElementById("root")).render(<App />);
+createRoot(document.getElementById("root")).render(<ProductTest />);
 

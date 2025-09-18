@@ -5,9 +5,10 @@ import axios from "axios";
 export default function ProductTest() {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({});
-  const url = "https://mern-backend-drab-rho.vercel.app/api/products/";
+  // const url = "https://mern-backend-drab-rho.vercel.app/api/products/";
+  const API_URL = import.meta.env.VITE_API_URL + "/products/";
   const fetchProducts = async () => {
-    const response = await axios.get(url);
+    const response = await axios.get(API_URL);
     setProducts(response.data.products);
   };
   useEffect(() => {
@@ -15,14 +16,14 @@ export default function ProductTest() {
   }, []);
 
   const addProduct = async () => {
-    const response = await axios.post(url, product);
+    const response = await axios.post(API_URL, product);
     fetchProducts();
   };
 
   const deleteProduct = async (id) => {
     const result = confirm("Are you sure you want to delete?");
     if (result) {
-      const response = await axios.delete(url + id);
+      const response = await axios.delete(API_URL + id);
       fetchProducts();
     }
   };
