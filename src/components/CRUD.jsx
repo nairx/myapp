@@ -5,6 +5,7 @@ export default function CRUD() {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({});
   const url = "https://mern-backend-drab-rho.vercel.app/api/products/";
+  
   const fetchProducts = async () => {
     try {
       const response = await axios.get(url);
@@ -16,6 +17,8 @@ export default function CRUD() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+
 
   const addProduct = async () => {
     try {
